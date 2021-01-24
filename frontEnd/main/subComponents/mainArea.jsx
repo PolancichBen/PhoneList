@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
-const ListArea = () => {
+import List from './list/list';
+
+const MainArea = ({data, loadListings}) => {
+  // console.log('ListArea data', data)
   const [itemInput, setIteminput] = useState('');
   const [optionsExtended, setOptionsExtended] = useState(false);
 
@@ -31,9 +34,14 @@ const ListArea = () => {
         <button onClick={() => fastAdd()}>Fast Add</button>
         <button onClick={() => showMoreOptions()}>More Options</button>
       </div>
-      <div></div> // List Area
+      <div>
+    {console.log(data)}
+      {data.exampleListItems.map((listItem,i)=>(
+        <List type='main' details={listItem} key={i}/>
+      ))}  
+      </div>
     </div>
   );
 };
 
-export default ListArea;
+export default MainArea;

@@ -3,23 +3,9 @@ import Axios from 'axios';
 
 import List from './list/list.jsx';
 
-const getListItems = () => {
-  Axios.get('/listItems')
-    .then((res) => {
-      console.log(`Recieved ${res.data}`);
-    })
-    .catch((err) => {
-      console.log('Error getting new list Items', err);
-    });
-};
-
-const SideArea = () => {
+const SideArea = ({data, loadListings}) => {
   const [expandSideBar, setExpandSideBar] = useState(false);
-  const [listItems, setListItems] = useState('');
-
-  useEffect(() => {
-    getListItems();
-  }, []);
+  // console.log('Side Area Data', data);
 
   const sideBarExpansion = () => {
     setExpandSideBar(!expandSideBar);
@@ -31,7 +17,9 @@ const SideArea = () => {
       <button onClick={() => sideBarExpansion()}>SideBar</button>
       {expandSideBar && (
         <div>
-          <List />
+          {data && data.exampleListItems.map((listItem,i)=>(
+            <List type='side' details={listItem} key={i}/>
+          ))}
         </div>
       )}
     </div>

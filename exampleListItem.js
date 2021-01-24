@@ -1,17 +1,21 @@
 const exampleListItems = [
   {
     name: 'List One',
-    items: ['Batteries', 'Bread', 'Cat Food'],
+    items: {id:1, item:'Batteries',id:2, item:'Bread', id:3, item:'Cat Food'},
     id: 1,
   },
   {
     name: 'List Two',
-    items: ['Snow Shoes', 'Hiking Gear', 'Rope'],
+    items: {id:4, item:'Snow Shoes', id:5, item:'Hiking Gear', id:6, item:'Rope'},
     id: 2,
   },
   {
     name: 'List Three',
-    items: ['Speakers', 'Cables', 'TV'],
+    items: {id:7, item:'Speakers',id:8, item: 'Cables',id:9, item: 'TV'},
     id: 3,
   },
 ];
+
+module.exports = {
+  exampleListItems
+}
