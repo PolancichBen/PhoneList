@@ -1,4 +1,4 @@
-require("regenerator-runtime/runtime");
+require('regenerator-runtime/runtime');
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
@@ -16,7 +16,8 @@ const Main = () => {
     Axios.get('/listItems')
       .then((res) => {
         setListItems(res.data);
-      }).then(()=> {
+      })
+      .then(() => {
         setIsLoading(false);
       })
       .catch((err) => {
@@ -28,17 +29,23 @@ const Main = () => {
     getListItems();
   }, []);
 
-  if(isLoading){
-    return (
-      <LoadingScreen />
-    )
+  if (isLoading) {
+    return <LoadingScreen />;
   } else {
     return (
       <div className={styles.cover}>
-      <SideArea className={styles.sideArea} loadListings={getListItems} data={listItems}/>
-      <MainArea className={styles.listArea} loadListings={getListItems} data={listItems}/>
-    </div>
-      )
-  };
+        <SideArea
+          className={styles.sideArea}
+          loadListings={getListItems}
+          data={listItems}
+        />
+        <MainArea
+          className={styles.listArea}
+          loadListings={getListItems}
+          data={listItems}
+        />
+      </div>
+    );
+  }
 };
 export default Main;

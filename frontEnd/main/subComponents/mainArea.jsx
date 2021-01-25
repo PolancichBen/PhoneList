@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 import List from './list/list';
 
-const MainArea = ({data, loadListings}) => {
+const MainArea = ({ data, loadListings }) => {
   // console.log('ListArea data', data)
   const [itemInput, setIteminput] = useState('');
   const [optionsExtended, setOptionsExtended] = useState(false);
@@ -35,10 +35,9 @@ const MainArea = ({data, loadListings}) => {
         <button onClick={() => showMoreOptions()}>More Options</button>
       </div>
       <div>
-    {console.log(data)}
-      {data.exampleListItems.map((listItem,i)=>(
-        <List type='main' details={listItem} key={i}/>
-      ))}  
+        {data.exampleListItems.map((listItem) => (
+          <List type="main" details={listItem} key={listItem.id} />
+        ))}
       </div>
     </div>
   );
